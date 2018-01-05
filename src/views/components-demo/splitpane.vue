@@ -3,6 +3,7 @@
     <code><strong>SplitPane</strong> If you've used
       <a href="http://codepen.io/" target="_blank"> codepen</a>,
       <a href="https://jsfiddle.net/" target="_blank"> jsfiddle </a>will not be unfamiliar.
+      <a href="https://github.com/wykotton/vue-company-cc/blob/master/doc/Vue_Split_Pane.md" target='_blank'> Github repository</a>
     </code>
     <split-pane v-on:resize="resize" split="vertical">
       <template slot="paneL">

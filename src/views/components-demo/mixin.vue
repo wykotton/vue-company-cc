@@ -51,7 +51,7 @@
           </div>
           <div class="component-item">
             <pan-thumb width="100px" height="100px" image="https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191">
-              vue-element-admin
+              vue-company-cc
             </pan-thumb>
           </div>
         </el-card>
@@ -74,7 +74,7 @@
             <span>hover text</span>
           </div>
           <div class="component-item">
-            <mallki className="mallki-text" text="vue-element-admin"></mallki>
+            <mallki className="mallki-text" text="vue-company-cc"></mallki>
           </div>
         </el-card>
       </el-col>
@@ -130,12 +130,8 @@ export default {
         title: [{ required: true, trigger: 'change', validator: validate }]
       },
       articleList: [
-        { title: '基础篇', href: 'https://segmentfault.com/a/1190000009275424' },
-        { title: '登录权限篇', href: 'https://segmentfault.com/a/1190000009506097' },
-        { title: '实战篇', href: 'https://segmentfault.com/a/1190000009762198' },
-        { title: 'vueAdmin-template 篇', href: 'https://segmentfault.com/a/1190000010043013' },
-        { title: '自行封装 component', href: 'https://segmentfault.com/a/1190000009090836' },
-        { title: '优雅的使用 icon', href: 'https://segmentfault.com/a/https://segmentfault.com/a/1190000012213278' }
+        { title: '基础篇', href: '#' },
+        { title: '权限篇', href: '#' }
       ]
     }
   }

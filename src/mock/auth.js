@@ -357,7 +357,7 @@ export default {
     source_uri: 'https://github.com/wykotton/vue-company-cc',
     status: 'published',
     tags: [],
-    title: 'vue-element-admin'
+    title: 'vue-company-cc'
   }),
   createArticle: () => ({
     data: 'success'

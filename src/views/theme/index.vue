@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card class="box-card">
       <div slot="header">
-        <a class='link-type link-title' target="_blank" href='https://panjiachen.github.io/vue-element-admin-site/#/theme'>
+        <a class='link-type link-title' target="_blank" href='https://wykotton.github.io/vue-company-cc-site/#/theme'>
         {{$t('theme.documentation')}}
         </a>
       </div>

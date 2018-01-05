@@ -1,6 +1,6 @@
 <template>
   <div class="app-container documentation-container">
-    <a class="document-btn" target='_blank' href="https://panjiachen.github.io/vue-element-admin-site/#/">{{$t('documentation.documentation')}}</a>
+    <a class="document-btn" target='_blank' href="http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/standardGeneral.md">{{$t('documentation.documentation')}}</a>
     <a class="document-btn" target='_blank' href="https://github.com/wykotton/vue-company-cc/">{{$t('documentation.github')}}</a>
     <dropdown-menu style="float:left;margin-left:50px;" title='系列文章' :items='articleList'></dropdown-menu>
   </div>

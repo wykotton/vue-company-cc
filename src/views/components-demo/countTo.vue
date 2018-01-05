@@ -1,7 +1,7 @@
 <template>
   <div class="components-container">
     <p class="warn-content">
-      <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">countTo-component</a>
+      <a href="https://github.com/wykotton/vue-company-cc/blob/master/doc/vue-countTo.md" target="_blank">countTo-component</a>
     </p>
     <count-to ref="example" class="example" :start-val="_startVal" :end-val="_endVal" :duration="_duration" :decimals="_decimals"
       :separator="_separator" :prefix="_prefix" :suffix="_suffix" :autoplay="false"></count-to>
