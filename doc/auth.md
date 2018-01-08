@@ -1,6 +1,6 @@
-# el-button
+# v-auth 指令，按钮权限
 
-el-button是基于Element UI的Button组件进行封装的支持权限控制的按钮组件。
+v-auth是基于Element UI的Button组件进行封装的支持权限控制的按钮组件。
 
 **功能特性：**
 
