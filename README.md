@@ -16,7 +16,7 @@
 
 **组件：**
 
-bird-front对常用的数据组件进行了封装，使其简单易用，包括：
+对常用的数据组件进行了封装，使其简单易用，包括：
 - [组件介绍](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/components.md)
     - 分页[Page](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/page.md)
     - 表格[DataGrid](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/DataGrid.md)
