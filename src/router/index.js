@@ -8,7 +8,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '../views/layout/Layout'
 
-
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
 * redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
