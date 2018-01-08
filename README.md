@@ -24,7 +24,8 @@ bird-front对常用的数据组件进行了封装，使其简单易用，包括�
     - 上传[Upload](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/upload.md)
     - 文件上传[FileUpload](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/fileUpload.md)
     - 图片预览[ImagePreview](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/imagePreview.md)
-    - 权限按钮[v-auth](http://gitlab.flaginfo.com.cn/application-business/vue-frontend-scaffold/blob/master/doc/imagePreview.md)
+    - 菜单权限[v-auth](https://github.com/wykotton/vue-company-cc/blob/master/doc/role.md)
+    - 权限按钮[v-auth](https://github.com/wykotton/vue-company-cc/blob/master/doc/auth.md)
 
 
 所有业务组件的理念均是结合服务端接口进行组件的封装，兼顾灵活性的同时保证更优的业务开发速度。
