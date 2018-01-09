@@ -249,6 +249,27 @@ export const asyncRouterMap = [
     redirect: 'noredirect',
     children: [{ path: 'index', component: _import('theme/index'), name: 'theme', meta: { title: 'theme', icon: 'theme' }}]
   },
+  {
+    path: '/user',
+    component: Layout,
+    name: 'user',
+    redirect: 'noredirect',
+    meta: {
+      title: 'user',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'organization',
+        component: _import('user/organization'),
+        name: 'organization',
+        meta: {
+          title: 'organization',
+          icon: 'chart'
+        }
+      }
+    ]
+  },
 
   // {
   //   path: '/clipboard',
