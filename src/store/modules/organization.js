@@ -45,13 +45,34 @@ const removeChild = (id, list) => {
 }
 
 const findObj = (id, list) => {
+  let res = null
   for (let i = 0; i < list.length; i++) {
     if (+list[i].id === +id) {
-      return list[i]
-    } else if (list[i].children && list[i].children.length > 0) {
-      return findObj(id, list[i].children)
+      console.log('id----' + list[i])
+      res = list[i]
+      break
     }
   }
+  if (!res) {
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].children && list[i].children.length > 0) {
+        return findObj(id, list[i].children)
+      }
+    }
+  }
+
+  return res
+}
+
+const getIds = (ids, list) => {
+  console.log(list, 'aaabbb')
+  for (let i = 0; i < list.length; i++) {
+    ids.push(list[i].id)
+    if (list[i].children && list[i].children.length > 0) {
+      ids = getIds(ids, list[i].children)
+    }
+  }
+  return ids
 }
 
 const organization = {
@@ -111,6 +132,18 @@ const organization = {
       if (state.expendList.indexOf(id) < 0) {
         state.expendList.push(id)
       }
+    },
+    REMOVE_EXPEND(state, id) {
+      console.log('---id', id)
+      const ids = getIds([], [...findObj(id, state.treeList)])
+
+      console.log('ids', ids)
+
+      for (let i = 0; i < ids.length; i++) {
+        if (state.expendList.indexOf(ids[i]) >= 0) {
+          state.expendList.splice(state.expendList.indexOf(ids[i]), 1)
+        }
+      }
     }
   },
 
@@ -158,6 +191,9 @@ const organization = {
       setTimeout(() => {
         commit('REMOVE_ITEM', id)
       }, 1000)
+    },
+    closeExpand({ commit }, id) {
+      commit('REMOVE_EXPEND', id)
     }
   }
 }

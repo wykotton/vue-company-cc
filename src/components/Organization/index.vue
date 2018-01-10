@@ -4,6 +4,7 @@
       highlight-current
       :expand-on-click-node="false"
       @node-click="handleNodeClick"
+      @node-collapse="handleNodeClose"
       ref="tree"
     ></el-tree>
   </div>
@@ -57,7 +58,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['queryOrganization', 'addOrganization', 'selectedOrganization', 'removeOrganization']),
+    ...mapActions(['queryOrganization', 'addOrganization', 'selectedOrganization', 'removeOrganization', 'closeExpand']),
     loadNode(node, resolve) {
       if (node.level === 0) {
         return resolve(this.treeData)
@@ -79,6 +80,9 @@ export default {
       this.removeOrganization(id)
       this.queryOrganization(this.item.pid)
       // this.$refs.tree.setCurrentKey(id)
+    },
+    handleNodeClose(data) {
+      this.closeExpand(data.id)
     }
   },
   watch: {
