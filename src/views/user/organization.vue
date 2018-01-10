@@ -1,46 +1,23 @@
 <template>
   <div class="app-container">
-    <div v-for="tree in treeData" :key="tree.id">
-      {{tree.id}} - {{tree.name}}
-    </div>
-    <div>--------------------</div>
-    <div>{{item.id}} - {{item.name}}</div>
-    <div>--------------------</div>
-    <div v-for="item in list" :key="item.id">
-      {{item.id}} - {{item.name}}
-    </div>
+    <organization @node-click="handleNodeClick" ref="orgTree"></organization>
+
+    <el-button @click="refresh">刷新</el-button>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import Organization from '../../components/Organization'
 
 export default {
-  mounted() {
-    this.selectedOrganization(1)
-    this.queryOrganization(1)
-
-    this.addOrganization({
-      pid: 0,
-      level: 1,
-      name: '测试组织机构',
-      code: '00000',
-      id: 3
-    })
-
-    setTimeout(() => {
-      this.removeOrganization(1)
-    }, 3000)
-  },
-  computed: {
-    ...mapGetters({
-      treeData: 'organizationTreeList',
-      item: 'organizationItem',
-      list: 'organizationList'
-    })
-  },
+  components: { Organization },
   methods: {
-    ...mapActions(['queryOrganization', 'addOrganization', 'selectedOrganization', 'removeOrganization'])
+    handleNodeClick(data) {
+      console.log('选中节点加载数据', data.id)
+    },
+    refresh() {
+      this.$refs.orgTree.refresh(11)
+    }
   }
 }
 </script>

@@ -1,4 +1,4 @@
-
+import Vue from 'vue'
 let orgList = []
 
 const appendChild = (id, list, pid, data, replace) => {
@@ -14,9 +14,13 @@ const appendChild = (id, list, pid, data, replace) => {
     console.log(list, list.length)
     for (let i = 0; i < list.length; i++) {
       if (list[i].children && list[i].children.length) {
-        list[i].children = appendChild(list[i].id, list[i].children, pid, data, replace)
+        // list[i].children = appendChild(list[i].id, list[i].children, pid, data, replace)
+
+        Vue.set(list[i], 'children', appendChild(list[i].id, list[i].children, pid, data, replace))
       } else {
-        list[i].children = appendChild(list[i].id, [], pid, data, replace)
+        // list[i].children = appendChild(list[i].id, [], pid, data, replace)
+
+        Vue.set(list[i], 'children', appendChild(list[i].id, [], pid, data, replace))
       }
     }
   }
@@ -30,7 +34,9 @@ const removeChild = (id, list) => {
       list.splice(i, 1)
     } else {
       if (list[i].children && list[i].children.length) {
-        list[i].children = removeChild(id, list[i].children)
+        // list[i].children = removeChild(id, list[i].children)
+
+        Vue.set(list[i], 'children', removeChild(id, list[i].children))
       }
     }
   }
@@ -43,7 +49,7 @@ const findObj = (id, list) => {
     if (+list[i].id === +id) {
       return list[i]
     } else if (list[i].children && list[i].children.length > 0) {
-      findObj(id, list.children)
+      return findObj(id, list[i].children)
     }
   }
 }
@@ -52,18 +58,11 @@ const organization = {
   state: {
     treeList: [
       {
-        pid: 0,
+        pid: -1,
         level: 0,
-        name: '测试测时',
+        name: '组织结构',
         code: '0000',
-        id: 1
-      },
-      {
-        pid: 0,
-        level: 0,
-        name: '测试测时222',
-        code: '0000',
-        id: 2
+        id: 0
       }
     ],
     treeItem: {
@@ -76,22 +75,25 @@ const organization = {
       children: []
     },
     selectItem: {},
-    selectChildren: []
+    selectChildren: [],
+    expendList: [0]
   },
 
   getters: {
     organizationTreeList: state => state.treeList,
     organizationItem: state => state.selectItem,
-    organizationList: state => state.selectChildren
+    organizationList: state => state.selectChildren,
+    organizationExpendList: state => state.expendList
   },
 
   mutations: {
     APPEND_TREELIST(state, { pid, data, replace = false }) {
       console.log('APPEND_TREELIST')
       orgList = state.treeList
-      const alist = appendChild(0, orgList, pid, data, replace)
+      const alist = appendChild(-1, orgList, pid, data, replace)
       console.log('--', alist)
-      state.treeList = alist
+      // state.treeList = alist
+      // Vue.set(state, 'treeList', alist)
     },
     SET_CURRENT_CHILD(state, data) {
       state.selectChildren = [...data]
@@ -100,37 +102,49 @@ const organization = {
       state.selectItem = item
     },
     REMOVE_ITEM(state, id) {
-      const list = removeChild(id, state.treeList)
-      state.treeList = list
+      removeChild(id, state.treeList)
+      // const list = removeChild(id, state.treeList)
+      // Vue.set(state, 'treeList', list)
+      // state.treeList = list
+    },
+    ADD_EXPEND(state, id) {
+      if (state.expendList.indexOf(id) < 0) {
+        state.expendList.push(id)
+      }
     }
   },
 
   actions: {
     queryOrganization({ commit, state }, pid) {
-      setTimeout(() => {
-        const data = [
-          {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const data = [
+            {
+              pid: pid,
+              level: 0,
+              name: '测试测时' + pid + '-' + (pid * 10 + 1),
+              code: '0000',
+              id: pid * 10 + 1
+            },
+            {
+              pid: 0,
+              level: 0,
+              name: '测试22测时' + pid + '-' + (pid * 10 + 2),
+              code: '0000',
+              id: pid * 10 + 2
+            }
+          ]
+          commit('APPEND_TREELIST', {
             pid: pid,
-            level: 0,
-            name: '测试测时' + pid,
-            code: '0000',
-            id: pid * 10 + 1
-          },
-          {
-            pid: 0,
-            level: 0,
-            name: '测试测时222' + pid,
-            code: '0000',
-            id: pid * 10 + 2
-          }
-        ]
-        commit('APPEND_TREELIST', {
-          pid: pid,
-          data: data,
-          replace: true
-        })
-        commit('SET_CURRENT_CHILD', data)
-      }, 1000)
+            data: data,
+            replace: true
+          })
+          commit('SET_CURRENT_CHILD', data)
+          commit('ADD_EXPEND', pid)
+
+          resolve()
+        }, 1000)
+      })
     },
     addOrganization({ commit, state }, org) {
       setTimeout(() => {
